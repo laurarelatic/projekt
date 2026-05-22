@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumiere | Luxury Slider</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav><a href="index.html">
+                <div class="logo">
+                    <img src="slike/Group 8.png" alt="slika"> Lumiere
+                </div>
+            </a>
+ 
+            <ul>
+                <li><a href="index.html">POČETNA</a></li>
+                <li><a href="onama.html">O NAMA</a></li>
+                <li><a href="shop.html">SHOP</a></li>
+                <li><a href="kontakt.html">KONTAKT</a></li>
+        <li class="cart-icon">
+                    <a href="kosarica.html">
+                        <img src="slike/Group 10 (1).png" alt="kosarica">
+                    </a>
+                    <span id="cart-count">0</span>
+
+</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="slider-container">
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <div class="hero-content">
+                <div class="product-container">
+                    <div class="glow-effect"></div>
+                    <img src="sjajila/Gemini_Generated_Image_q5e0lzq5e0lzq5e0-removebg-preview.png" alt="Sjajilo 1"
+                        class="product-img">
+                </div>
+                <div class="hero-text">
+                    <span class="subtitle">NOVA KOLEKCIJA</span>
+                    <h1>GOLDEN <br> HOUR</h1>
+                    <p>Ulovite savršeni sjaj zalaska sunca. Golden Hour sjajilo donosi toplinu i nevjerojatnu refleksiju
+                        svjetlosti koja traje satima.</p>
+                    <a href="shop.html" class="btn-shop">KUPI ODMAH</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+            <div class="hero-content">
+                <div class="product-container">
+                    <div class="glow-effect"></div>
+                    <img src="sjajila/Gemini_Generated_Image_ydm5i1ydm5i1ydm5-removebg-preview.png" alt="Sjajilo 2"
+                        class="product-img">
+                </div>
+                <div class="hero-text">
+                    <span class="subtitle">HIDRATACIJA</span>
+                    <h1>ROSE <br> QUARTZ</h1>
+                    <p>Nježna formula obogaćena prirodnim uljima. Rose Quartz nudi suptilnu ružičastu nijansu za svjež i
+                        sofisticiran dnevni izgled.</p>
+                    <a href="shop.html" class="btn-shop">KUPI ODMAH</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+            <div class="hero-content">
+                <div class="product-container">
+                    <div class="glow-effect"></div>
+                    <img src="sjajila/Gemini_Generated_Image_yr9p7pyr9p7pyr9p-removebg-preview.png" alt="Sjajilo 3"
+                        class="product-img">
+                </div>
+                <div class="hero-text">
+                    <span class="subtitle">VEČERNJA ELEGANCIJA</span>
+                    <h1>MIDNIGHT <br> SPARKLE</h1>
+                    <p>Za trenutke kada želite ostaviti dojam. Duboki sjaj i intenzivna tekstura Midnight Sparkle
+                        sjajila čine vaše usne neodoljivima.</p>
+                    <a href="shop.html" class="btn-shop">KUPI ODMAH</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kontrole -->
+        <div class="slider-controls">
+            <button class="control-btn" onclick="prevSlide()">&#10094;</button>
+            <button class="control-btn" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+
+    <section class="info-section">
+        <div class="info-box">
+
+            <h3>Prirodni Sastojci</h3>
+            <p>Naša formula sadrži samo najfinija prirodna ulja i minerale za vaše usne.</p>
+        </div>
+        <div class="info-box">
+
+            <h3>Cruelty Free</h3>
+            <p>Ponosni smo što niti jedan naš proizvod nije testiran na životinjama.</p>
+        </div>
+        <div class="info-box">
+
+            <h3>Brza Dostava</h3>
+            <p>Vaš omiljeni sjaj stiže na vašu adresu u roku od 24-48 sati.</p>
+        </div>
+    </section>
+
+    <section class="feature-section">
+        <div class="feature-image">
+            <img src="slike/Gemini_Generated_Image_6qmplf6qmplf6qmp.png" alt="Lumiere Lifestyle">
+        </div>
+        <div class="feature-text">
+            <h2>Dizajnirano za modernu ženu</h2>
+            <p>Lumiere nije samo šminka, to je modni dodatak. Elegantno pakiranje koje stane u svaku torbicu, spremno za
+                trenutke kada vam treba onaj poseban dodir luksuza.</p>
+            <a href="onama.html" class="btn-shop">SAZNAJ VIŠE</a>
+        </div>
+    </section>
+
+    <section class="reviews-section">
+        <h2 class="section-title">Što kažu naše klijentice</h2>
+        <div class="reviews-container">
+            <div class="review-box">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Najbolje sjajilo koje sam ikada probala. Nije ljepljivo, a sjaj je nevjerojatan!"</p>
+                <span class="author">- Marija K.</span>
+            </div>
+            <div class="review-box">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Zlatni pigmenti u 'Golden Hour' nijansi su savršeni za ljetne večeri. Obožavam ga!"</p>
+                <span class="author">- Ivana S.</span>
+            </div>
+            <div class="review-box">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Hidratacija traje satima. Usne izgledaju punije i zdravije. Svaka preporuka!"</p>
+                <span class="author">- Ana P.</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Lumiere</div>
+            <ul class="footer-links">
+                <li><a href="#">Privatnost</a></li>
+                <li><a href="#">Uvjeti korištenja</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+            <p class="copyright">&copy; 2026 Lumiere Cosmetics. Sva prava pridržana.</p>
+        </div>
+    </footer>
+
+    <script>
+
+        let currentIdx = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function updateSlider() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentIdx);
+            });
+        }
+
+        function nextSlide() {
+            currentIdx = (currentIdx + 1) % slides.length;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentIdx = (currentIdx - 1 + slides.length) % slides.length;
+            updateSlider();
+        }
+
+        // Automatski slider svakih 6 sekundi
+        setInterval(nextSlide, 6000);
+
+
+function updateCartCount(){
+
+    let kosarica = JSON.parse(localStorage.getItem("kosarica")) || [];
+
+    const cartCount = document.getElementById("cart-count");
+
+    if(cartCount){
+
+        if(kosarica.length > 0){
+
+            cartCount.style.display = "flex";
+            cartCount.innerText = kosarica.length;
+
+        } else {
+
+            cartCount.style.display = "none";
+
+        }
+    }
+}
+
+updateCartCount();
+
+    </script>
+</body>
+
+</html>

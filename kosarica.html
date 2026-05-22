@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Košarica</title>
+ <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap"
+        rel="stylesheet">
+<style>
+
+body{
+    background:#111;
+    color:white;
+    font-family:Arial;
+    padding:40px;
+     font-family: 'Playfair Display', serif;
+}
+
+.proizvod{
+    background:#1b1b1b;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.proizvod img{
+    width:200px;
+}
+
+button{
+    background-color:#d4af37;
+    padding: 8px;
+    border: #d4af37 solid 1px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+button:hover{
+        background-color:#a58724;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: large;
+}
+
+a:hover{
+  color:#d4af37;  
+}
+</style>
+
+</head>
+<body>
+<a href="shop.html">Vrati se na shop</a>
+<h1>Košarica</h1>
+
+<div id="kosarica-proizvodi"></div>
+
+
+<script>
+
+let kosarica = JSON.parse(localStorage.getItem("kosarica")) || [];
+
+const container = document.getElementById("kosarica-proizvodi");
+
+function prikaziKosaricu(){
+
+    container.innerHTML = "";
+
+    if(kosarica.length === 0){
+
+        container.innerHTML = "<h2>Košarica je prazna.</h2>";
+
+        return;
+    }
+
+    kosarica.forEach((proizvod, index) => {
+
+        container.innerHTML += `
+        
+        <div class="proizvod">
+
+            <img src="${proizvod.slika}" width="150">
+
+            <h2>${proizvod.naziv}</h2>
+
+            <p>${proizvod.cijena}</p>
+
+            <button onclick="obrisiProizvod(${index})">
+                Ukloni
+            </button>
+
+        </div>
+        
+        `;
+    });
+}
+
+function obrisiProizvod(index){
+
+    let stock = JSON.parse(localStorage.getItem("stock")) || {};
+
+    stock[kosarica[index].naziv]++;
+
+    localStorage.setItem("stock", JSON.stringify(stock));
+
+    kosarica.splice(index, 1);
+
+    localStorage.setItem("kosarica", JSON.stringify(kosarica));
+
+    prikaziKosaricu();
+}
+
+prikaziKosaricu();
+
+</script>
+
+</body>
+</html>

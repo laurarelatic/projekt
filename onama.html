@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumiere | O Nama</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">
+                <div class="logo">
+                    <img src="slike/Group 8.png" alt="">
+                    Lumiere
+                </div>
+            </a>
+            <ul>
+                <li><a href="index.html">POČETNA</a></li>
+                <li><a href="onama.html">O NAMA</a></li>
+               <li><a href="shop.html">SHOP</a></li>
+                <li><a href="kontakt.html">KONTAKT</a></li>
+                  <li class="cart-icon">
+                    <a href="kosarica.html">
+                        <img src="slike/Group 10 (1).png" alt="kosarica">
+                    </a>
+                    <span id="cart-count">0</span>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="about-hero">
+        <div class="hero-content">
+            <span>LUKSUZ • ELEGANCIJA • SJAJ</span>
+            <h1>O brendu Lumiere</h1>
+            <p>
+                Lumiere je nastao iz ljubavi prema sofisticiranoj ljepoti i modernom luksuzu.
+                Naša misija je stvoriti proizvode koji svakoj ženi pružaju osjećaj elegancije,
+                samopouzdanja i glamura u svakodnevnim trenucima.
+            </p>
+        </div>
+    </section>
+
+    <!-- STORY -->
+
+    <section class="story-section">
+        <div class="story-image">
+            <img src="slike/Gemini_Generated_Image_nefpgsnefpgsnefp.png" alt="">
+        </div>
+        <div class="story-text">
+            <h2>Naša priča</h2>
+            <p>
+                Inspirirani svjetlom, luksuzom i bezvremenskom ljepotom, kreirali smo kolekciju
+                proizvoda koja spaja kvalitetu, moderan dizajn i nježne formule.
+            </p>
+            <p>
+                Svaki Lumiere proizvod pažljivo je osmišljen kako bi naglasio prirodnu ljepotu
+                i pružio poseban osjećaj glamura pri svakom korištenju.
+            </p>
+            <a href="shop.html" class="btn-shop">ISTRAŽI KOLEKCIJU</a>
+        </div>
+
+    </section>
+
+    <!-- VALUES -->
+
+    <section class="values-section">
+
+        <h2 class="section-title">Naše vrijednosti</h2>
+
+        <div class="values-container">
+
+            <div class="value-box">
+                <h3>Premium kvaliteta</h3>
+
+                <p>
+                    Koristimo pažljivo odabrane sastojke i moderne formule za dugotrajan sjaj i njegu usana.
+                </p>
+            </div>
+
+            <div class="value-box">
+                <h3>Elegantan dizajn</h3>
+
+                <p>
+                    Minimalističko i luksuzno pakiranje inspirirano je modernom modom i sofisticiranošću.
+                </p>
+            </div>
+
+            <div class="value-box">
+                <h3>Cruelty Free</h3>
+
+                <p>
+                    Vjerujemo u ljepotu bez kompromisa i zato naši proizvodi nisu testirani na životinjama.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+
+    <section class="cta-section">
+
+        <h2>Ljepota koja ostavlja dojam</h2>
+
+        <p>
+            Otkrij kolekciju luksuznih sjajila dizajniranih da naglase tvoju prirodnu eleganciju
+            i donesu savršen glow u svakom trenutku.
+        </p>
+
+        <a href="shop.html" class="btn-shop">KUPI ODMAH</a>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-logo">Lumiere</div>
+
+        <ul class="footer-links">
+            <li><a href="#">Privatnost</a></li>
+            <li><a href="#">Uvjeti korištenja</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+
+        <p class="copyright">
+            &copy; 2026 Lumiere Cosmetics. Sva prava pridržana.
+        </p>
+
+    </footer>
+<script>
+    
+
+function updateCartCount(){
+
+    let kosarica = JSON.parse(localStorage.getItem("kosarica")) || [];
+
+    const cartCount = document.getElementById("cart-count");
+
+    if(cartCount){
+
+        if(kosarica.length > 0){
+
+            cartCount.style.display = "flex";
+            cartCount.innerText = kosarica.length;
+
+        } else {
+
+            cartCount.style.display = "none";
+
+        }
+    }
+}
+
+updateCartCount();
+</script>
+</body>
+
+</html>
