@@ -1,6 +1,14 @@
+<?php
+require "db.php";
+
+$proizvodi = $conn->query("
+    SELECT *
+    FROM sjajila
+    ORDER BY id DESC
+");
+?>
 <!DOCTYPE html>
 <html lang="hr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,31 +18,33 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
     <header>
-        <nav><a href="index.html">
-                <div class="logo">
-                    <img src="slike/Group 8.png" alt="slika"> Lumiere
-                </div>
+       <nav>
+    <a href="index.html">
+        <div class="logo">
+            <img src="slike/Group 8.png" alt="slika">
+            Lumiere
+        </div>
+    </a>
+    <div id="hamburgermeni">
+        ☰
+    </div>
+    <ul id="izbornik">
+        <li><a href="index.html">POČETNA</a></li>
+        <li><a href="onama.html">O NAMA</a></li>
+        <li><a href="shop.html">SHOP</a></li>
+        <li><a href="kontakt.html">KONTAKT</a></li>
+        <li class="cart-icon">
+            <a href="kosarica.html">
+                <img src="slike/Group 10 (1).png" alt="kosarica">
             </a>
-
-            <ul>
-                <li><a href="index.html">POČETNA</a></li>
-                <li><a href="onama.html">O NAMA</a></li>
-                <li><a href="shop.html">SHOP</a></li>
-                <li><a href="kontakt.html">KONTAKT</a></li>
-                <li class="cart-icon">
-                    <a href="kosarica.html">
-                        <img src="slike/Group 10 (1).png" alt="kosarica">
-                    </a>
-                    <span id="cart-count">0</span>
-            </ul>
-        </nav>
+            <span id="cart-count">0</span>
+        </li>
+    </ul>
+</nav>
     </header>
-
-    <div class="slider-container">
+     <div class="slider-container">
         <!-- Slide 1 -->
         <div class="slide active">
             <div class="hero-content">
@@ -243,12 +253,48 @@
                     DODAJ U KOŠARICU
                 </a>
             </div>
-
         </div>
+<br><br>
+   <div class="products-container">
+
+<?php while($p = $proizvodi->fetch_assoc()): ?>
+
+<div class="product-box">
+
+    <img
+        src="<?= htmlspecialchars($p['slika']) ?>"
+        alt="<?= htmlspecialchars($p['naziv']) ?>"
+    >
+
+    <h3><?= htmlspecialchars($p['naziv']) ?></h3>
+
+    <p><?= htmlspecialchars($p['opis']) ?></p>
+
+    <p style="font-size: large;">
+        <strong><?= number_format($p['cijena'], 2, ',', '.') ?> €</strong>
+    </p>
+
+  <p class="stock" id="stock-Velvet Nude">
+                    Na stanju: 10
+                </p>
+
+    <a href="javascript:void(0)"
+       class="btn-product"
+       onclick="dodajUKosaricu(
+           '<?= htmlspecialchars($p['naziv'], ENT_QUOTES) ?>',
+           '<?= number_format($p['cijena'], 2, ',', '.') ?> €',
+           '<?= htmlspecialchars($p['slika'], ENT_QUOTES) ?>'
+       )">
+        DODAJ U KOŠARICU
+    </a>
+
+</div>
+
+<?php endwhile; ?>
+
+</div>
+  
     </section>
-
-
-    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">Lumiere</div>
@@ -260,118 +306,7 @@
             <p class="copyright">&copy; 2026 Lumiere Cosmetics. Sva prava pridržana.</p>
         </div>
     </footer>
-
-    <script>
-        let currentIdx = 0;
-        const slides = document.querySelectorAll('.slide');
-
-        function updateSlider() {
-            slides.forEach((slide, index) => {
-                slide.classList.toggle('active', index === currentIdx);
-            });
-        }
-
-        function nextSlide() {
-            currentIdx = (currentIdx + 1) % slides.length;
-            updateSlider();
-        }
-
-        function prevSlide() {
-            currentIdx = (currentIdx - 1 + slides.length) % slides.length;
-            updateSlider();
-        }
-
-
-        let stock = JSON.parse(localStorage.getItem("stock")) || {
-
-            "Crystal Dew Glow": 10,
-            "Golden Hour": 10,
-            "Berry Mirage": 10,
-            "Rose Quartz": 10,
-            "Midnight Sparkle": 10,
-            "Peach Aura": 10,
-            "Diamond Kiss": 10,
-            "Velvet Nude": 10
-
-        };
-
-        function spremiStock() {
-            localStorage.setItem("stock", JSON.stringify(stock));
-        }
-
-        function updateStockPrikaz() {
-
-            for (let proizvod in stock) {
-
-                const element = document.getElementById("stock-" + proizvod);
-
-                if (element) {
-
-                    element.innerText = "Na stanju: " + stock[proizvod];
-
-                    if (stock[proizvod] <= 0) {
-                        element.innerText = "RASPRODANO";
-                        element.style.color = "red";
-                    }
-
-                }
-            }
-        }
-
-        function dodajUKosaricu(naziv, cijena, slika) {
-
-            if (stock[naziv] <= 0) {
-                alert("Proizvod nije dostupan.");
-                return;
-            }
-
-            let kosarica = JSON.parse(localStorage.getItem("kosarica")) || [];
-
-            const proizvod = {
-                naziv: naziv,
-                cijena: cijena,
-                slika: slika
-            };
-
-            kosarica.push(proizvod);
-
-            localStorage.setItem("kosarica", JSON.stringify(kosarica));
-
-            stock[naziv]--;
-
-            spremiStock();
-
-            updateStockPrikaz();
-
-            updateCartCount();
-        }
-
-        function updateCartCount() {
-
-            let kosarica = JSON.parse(localStorage.getItem("kosarica")) || [];
-
-            const cartCount = document.getElementById("cart-count");
-
-            if (cartCount) {
-
-                if (kosarica.length > 0) {
-
-                    cartCount.style.display = "flex";
-                    cartCount.innerText = kosarica.length;
-
-                } else {
-
-                    cartCount.style.display = "none";
-
-                }
-            }
-        }
-
-        updateCartCount();
-
-        updateStockPrikaz();
-
-    </script>
+<script src="shop.js"></script>
 </body>
 
 </html>

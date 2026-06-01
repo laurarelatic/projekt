@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="hr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumiere | Luxury Slider</title>
+    <title>Lumiere</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap"
         rel="stylesheet">
@@ -12,26 +11,28 @@
 </head>
 
 <body>
-
     <header>
-        <nav><a href="index.html">
+        <nav>
+            <a href="index.html">
                 <div class="logo">
-                    <img src="slike/Group 8.png" alt="slika"> Lumiere
+                    <img src="slike/Group 8.png" alt="slika">
+                    Lumiere
                 </div>
             </a>
- 
-            <ul>
+            <div id="hamburgermeni">
+                ☰
+            </div>
+            <ul id="izbornik">
                 <li><a href="index.html">POČETNA</a></li>
                 <li><a href="onama.html">O NAMA</a></li>
-                <li><a href="shop.html">SHOP</a></li>
+                <li><a href="shop.php">SHOP</a></li>
                 <li><a href="kontakt.html">KONTAKT</a></li>
-        <li class="cart-icon">
+                <li class="cart-icon">
                     <a href="kosarica.html">
                         <img src="slike/Group 10 (1).png" alt="kosarica">
                     </a>
                     <span id="cart-count">0</span>
-
-</li>
+                </li>
             </ul>
         </nav>
     </header>
@@ -50,7 +51,7 @@
                     <h1>GOLDEN <br> HOUR</h1>
                     <p>Ulovite savršeni sjaj zalaska sunca. Golden Hour sjajilo donosi toplinu i nevjerojatnu refleksiju
                         svjetlosti koja traje satima.</p>
-                    <a href="shop.html" class="btn-shop">KUPI ODMAH</a>
+                    <a href="shop.php" class="btn-shop">KUPI ODMAH</a>
                 </div>
             </div>
         </div>
@@ -68,7 +69,7 @@
                     <h1>ROSE <br> QUARTZ</h1>
                     <p>Nježna formula obogaćena prirodnim uljima. Rose Quartz nudi suptilnu ružičastu nijansu za svjež i
                         sofisticiran dnevni izgled.</p>
-                    <a href="shop.html" class="btn-shop">KUPI ODMAH</a>
+                    <a href="shop.php" class="btn-shop">KUPI ODMAH</a>
                 </div>
             </div>
         </div>
@@ -86,7 +87,7 @@
                     <h1>MIDNIGHT <br> SPARKLE</h1>
                     <p>Za trenutke kada želite ostaviti dojam. Duboki sjaj i intenzivna tekstura Midnight Sparkle
                         sjajila čine vaše usne neodoljivima.</p>
-                    <a href="shop.html" class="btn-shop">KUPI ODMAH</a>
+                    <a href="shop.php" class="btn-shop">KUPI ODMAH</a>
                 </div>
             </div>
         </div>
@@ -100,17 +101,14 @@
 
     <section class="info-section">
         <div class="info-box">
-
             <h3>Prirodni Sastojci</h3>
             <p>Naša formula sadrži samo najfinija prirodna ulja i minerale za vaše usne.</p>
         </div>
         <div class="info-box">
-
             <h3>Cruelty Free</h3>
             <p>Ponosni smo što niti jedan naš proizvod nije testiran na životinjama.</p>
         </div>
         <div class="info-box">
-
             <h3>Brza Dostava</h3>
             <p>Vaš omiljeni sjaj stiže na vašu adresu u roku od 24-48 sati.</p>
         </div>
@@ -161,55 +159,7 @@
         </div>
     </footer>
 
-    <script>
-
-        let currentIdx = 0;
-        const slides = document.querySelectorAll('.slide');
-
-        function updateSlider() {
-            slides.forEach((slide, index) => {
-                slide.classList.toggle('active', index === currentIdx);
-            });
-        }
-
-        function nextSlide() {
-            currentIdx = (currentIdx + 1) % slides.length;
-            updateSlider();
-        }
-
-        function prevSlide() {
-            currentIdx = (currentIdx - 1 + slides.length) % slides.length;
-            updateSlider();
-        }
-
-        // Automatski slider svakih 6 sekundi
-        setInterval(nextSlide, 6000);
-
-
-function updateCartCount(){
-
-    let kosarica = JSON.parse(localStorage.getItem("kosarica")) || [];
-
-    const cartCount = document.getElementById("cart-count");
-
-    if(cartCount){
-
-        if(kosarica.length > 0){
-
-            cartCount.style.display = "flex";
-            cartCount.innerText = kosarica.length;
-
-        } else {
-
-            cartCount.style.display = "none";
-
-        }
-    }
-}
-
-updateCartCount();
-
-    </script>
+   <script src="index.js"></script>
 </body>
 
 </html>

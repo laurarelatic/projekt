@@ -1,57 +1,49 @@
 <!DOCTYPE html>
 <html lang="hr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumiere | Kontakt</title>
-
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap"
         rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <!-- HEADER -->
     <header>
-        <nav>
-            <a href="index.html">
-                <div class="logo">
-                    <img src="slike/Group 8.png" alt="logo"> Lumiere
-                </div>
+      <nav>
+    <a href="index.html">
+        <div class="logo">
+            <img src="slike/Group 8.png" alt="slika">
+            Lumiere
+        </div>
+    </a>
+    <div id="hamburgermeni">
+        ☰
+    </div>
+    <ul id="izbornik">
+        <li><a href="index.html">POČETNA</a></li>
+        <li><a href="onama.html">O NAMA</a></li>
+        <li><a href="shop.php">SHOP</a></li>
+        <li><a href="kontakt.html">KONTAKT</a></li>
+        <li class="cart-icon">
+            <a href="kosarica.html">
+                <img src="slike/Group 10 (1).png" alt="kosarica">
             </a>
-
-            <ul>
-                <li><a href="index.html">POČETNA</a></li>
-                <li><a href="onama.html">O NAMA</a></li>
-                <li><a href="shop.html">SHOP</a></li>
-                <li><a href="kontakt.html">KONTAKT</a></li>
-               <li class="cart-icon">
-                    <a href="kosarica.html">
-                        <img src="slike/Group 10 (1).png" alt="kosarica">
-                    </a>
-                    <span id="cart-count">0</span>
-            </ul>
-        </nav>
+            <span id="cart-count">0</span>
+        </li>
+    </ul>
+</nav>
     </header>
-
-    <!-- CONTACT SECTION -->
     <section class="contact-hero">
-
         <div class="contact-text">
             <span class="subtitle">KONTAKTIRAJTE NAS</span>
-
             <h1>VOLIMO <br> ČUTI VAS</h1>
-
             <p>
                 Imate pitanje o našim sjajilima, dostavi ili narudžbi?
                 Naš Lumiere tim uvijek vam stoji na raspolaganju.
                 Javite nam se i odgovorit ćemo vam u najkraćem mogućem roku.
             </p>
-
             <div class="contact-info">
                 <div>
                     <h3>Email</h3>
@@ -67,33 +59,20 @@
                     <h3>TikTok</h3>
                     <span>@lumiere.cosmetics</span>
                 </div>
-
-
             </div>
         </div>
-
-        <!-- FORM -->
         <div class="contact-form">
-
             <h2>Pošaljite poruku</h2>
-
             <form>
                 <input type="text" placeholder="Vaše ime" required>
-
                 <input type="email" placeholder="Vaš email" required>
-
                 <textarea placeholder="Vaša poruka..." required></textarea>
-
                 <button type="submit" class="btn-contact">
                     POŠALJI
                 </button>
             </form>
-
         </div>
-
     </section>
-
-    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">Lumiere</div>
@@ -109,32 +88,7 @@
             </p>
         </div>
     </footer>
-<script>
-    
-
-function updateCartCount(){
-
-    let kosarica = JSON.parse(localStorage.getItem("kosarica")) || [];
-
-    const cartCount = document.getElementById("cart-count");
-
-    if(cartCount){
-
-        if(kosarica.length > 0){
-
-            cartCount.style.display = "flex";
-            cartCount.innerText = kosarica.length;
-
-        } else {
-
-            cartCount.style.display = "none";
-
-        }
-    }
-}
-
-updateCartCount();
-</script>
+<script src="kontakt.js"></script>
 </body>
 
 </html>
